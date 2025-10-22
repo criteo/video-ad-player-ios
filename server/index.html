@@ -1,0 +1,208 @@
+<html>
+  <head><title>Criteo - Video Onsite Integration Demo</title>
+</head>
+  <body>
+    <!--
+        NOTE: an <iframe> can be used for sanboding
+        https://interactiveadvertisingbureau.github.io/Open-Measurement-SDKJS/#om-sdk-for-web-video-and-iframe
+    -->
+    <video id="video-creative-element" width="320" height="240" autoplay muted playsinline webkit-playsinline disablePictureInPicture loop="true">
+        <source src="https://omsdk-demo-files.s3.us-west-2.amazonaws.com/ra_1.3/IABTL_VAST_Intro_30s.mp4" type="video/mp4">
+    </video>
+
+    <!-- Load both OM SDK & OMID session client library from Criteo's CDN -->
+    <script src="https://static.criteo.net/banners/js/omidjs/stable/omweb-v1.js"></script>
+    <script src="https://static.criteo.net/banners/js/omidjs/stable/omid-session-client-v1.js"></script>
+
+    <!-- Retailer Integration -->
+    <script>
+        // 0. VAST informations (that contains both the verification script & the parameters)
+        // NOTE: If you need help retrieving and parsing the VAST: https://developers.criteo.com/retail-media-delivery/docs/commerce-video-integration#requesting-and-parsing-the-vast-tag
+        const bbtUrl = 'https://httpdump.app/dumps/5abcc37e-0ca1-4049-9aaf-d65b114f95c8'
+        const vastVerifications = [{
+            javaScriptResource: 'https://static.criteo.net/banners/js/omidjs/stable/omid-validation-verification-script-for-retail-media.js',
+            vendor: 'criteo.com-omid',
+            verificationParameters: JSON.stringify({
+                "beacons": {
+                    "omidTrackView": `${bbtUrl}/beacon/omidTrackView`,
+                    "start": `${bbtUrl}/beacon/start`,
+                    "firstQuartile": `${bbtUrl}/beacon/firstQuartile`,
+                    "midpoint": `${bbtUrl}/beacon/midpoint`,
+                    "thirdQuartile": `${bbtUrl}/beacon/thirdQuartile`,
+                    "complete": `${bbtUrl}/beacon/complete`,
+                    "twoSecondsFiftyPercentView": `${bbtUrl}/beacon/twoSecondsFiftyPercentView`
+                }
+            }),
+        }];
+
+        // 1. Create a session client using the OM SDK
+        let sessionClient;
+        try {
+            sessionClient = OmidSessionClient['default'];
+        } catch (e) { /* Can't use OM SDK :( */ 
+            console.error("Could not create the OMID Session Client", e);
+            throw e;
+        }
+
+        if (!sessionClient) { /* Can't use OM SDK :( */ 
+            var errorMessage = "Could not create the OMID Session Client (session is undefined)"
+            console.error(errorMessage);
+            throw errorMessage;
+        }
+
+        const AdSession = sessionClient.AdSession;
+        const Partner = sessionClient.Partner;
+        const Context = sessionClient.Context;
+        const VerificationScriptResource = sessionClient.VerificationScriptResource;
+        const AdEvents = sessionClient.AdEvents;
+        const MediaEvents = sessionClient.MediaEvents;
+        const VastProperties = sessionClient.VastProperties;
+
+        // 2. Setup the partner informations
+        const CONTENT_URL = window.location.href;
+        const PARTNER_NAME = 'criteo';
+        const PARTNER_VERSION = Object.keys(OmidSessionClient)[0]; // Criteo's OM SDK version
+
+        const partner = new Partner(PARTNER_NAME, PARTNER_VERSION);
+
+        // 3. Initialize context
+        const OMSDK_SERVICE_WINDOW = window.top;
+        const VIDEO_ELEMENT = document.getElementById('video-creative-element');
+
+        const resources = vastVerifications.map((verification) => {
+            const scriptUrl = verification.javaScriptResource;
+            // https://interactiveadvertisingbureau.github.io/Open-Measurement-SDKJS/accessmodes.html
+            const accessMode = 'full';
+            return new VerificationScriptResource(scriptUrl, verification.vendor, verification.verificationParameters, accessMode);
+        });
+
+        const context = new Context(partner, resources, CONTENT_URL);
+        context.setVideoElement(VIDEO_ELEMENT);
+        context.setServiceWindow(OMSDK_SERVICE_WINDOW);
+
+        // 4. Initialize the ad session
+        const adSession = new AdSession(context);
+        adSession.setCreativeType('video');
+        adSession.setImpressionType('beginToRender');
+
+        if (!adSession.isSupported()) {
+            const errorMessage = "Ad session is not supported."
+            console.error(errorMessage)
+            throw errorMessage
+        }
+
+        const adEvents = new AdEvents(adSession);
+        const mediaEvents = new MediaEvents(adSession);
+
+        adSession.start();
+
+        // 5. Hook session & impression events
+        const state = {
+            mediaState: {
+                isBuffering: false,
+                isFullscreen: document.fullscreenElement === VIDEO_ELEMENT,
+                quartileEvents: { "1q": false, "2q": false, "3q": false, "4q": false },
+                lastVideoPercentage: null
+            },
+            omidState: {
+                sessionActive: false,
+                sessionFinished: false,
+            }
+        };
+
+        adSession.registerSessionObserver((event) => {
+            const {adSessionId, timestamp, type, data} = event;
+            switch (type) {
+                case 'sessionStart':
+                    state.omidState.sessionActive = true;
+
+                    // We don't return this as part of the VAST file :)
+                    const isSkippable = false;
+                    const skipOffset = 0;
+                    const vastProperties = new VastProperties(isSkippable, skipOffset, /* isAutoPlay= */ true, /* position= */ 'standalone');
+                    
+                    // load event
+                    adEvents.loaded(vastProperties);
+
+                    adEvents.impressionOccurred();
+                    break;
+                case 'sessionError':
+                    console.error("An OMID session error occured", event);
+                    throw event;
+                case 'sessionFinish':
+                    // clean up
+                    console.log("The OMID session finished", event);
+                    break;
+            }
+        });
+
+        /// 6. Hook quartile events
+        VIDEO_ELEMENT.addEventListener("play", () => {
+            if (state.omidState.sessionFinished) return;
+            if (VIDEO_ELEMENT.currentTime != 0) {
+                mediaEvents.resume();
+            }
+        });
+        VIDEO_ELEMENT.addEventListener("pause", () => {
+            if (state.omidState.sessionFinished) return;
+            if (!VIDEO_ELEMENT.ended) {
+                mediaEvents.pause();
+            }
+        });
+        VIDEO_ELEMENT.addEventListener("waiting", () => {
+            if (state.omidState.sessionFinished) return;
+            state.mediaState.isBuffering = true;
+            mediaEvents.bufferStart();
+        });
+        VIDEO_ELEMENT.addEventListener("timeupdate", () => {
+            if (state.omidState.sessionFinished) return;
+            if (state.mediaState.isBuffering) {
+                state.mediaState.isBuffering = false;
+                mediaEvents.bufferFinish();
+            }
+            if (VIDEO_ELEMENT.duration > 0) {
+                const percentProgress = VIDEO_ELEMENT.currentTime / VIDEO_ELEMENT.duration;
+                if (percentProgress >= 0 && state.mediaState.lastVideoPercentage == null) {
+                    mediaEvents.start(VIDEO_ELEMENT.duration, VIDEO_ELEMENT.muted ? 0 : VIDEO_ELEMENT.volume);
+                } else if (percentProgress >= .25 && !state.mediaState.quartileEvents["1q"]) {
+                    state.mediaState.quartileEvents["1q"] = true;
+                    mediaEvents.firstQuartile();
+                } else if (percentProgress >= .50 && !state.mediaState.quartileEvents["2q"]) {
+                    state.mediaState.quartileEvents["2q"] = true;
+                    mediaEvents.midpoint();
+                } else if (percentProgress >= .75 && !state.mediaState.quartileEvents["3q"]) {
+                    state.mediaState.quartileEvents["3q"] = true;
+                    mediaEvents.thirdQuartile();
+                } else if (percentProgress >= .99 && !state.mediaState.quartileEvents["4q"]) {
+                    state.mediaState.quartileEvents["4q"] = true;
+                    mediaEvents.complete();
+                }
+                
+                state.mediaState.lastVideoPercentage = percentProgress;
+            }
+        });
+        VIDEO_ELEMENT.addEventListener("volumechange", () => {
+            if (state.omidState.sessionFinished) return;
+            mediaEvents.volumeChange(VIDEO_ELEMENT.muted ? 0 : VIDEO_ELEMENT.volume);
+        });
+
+        // event listeners for ios
+        VIDEO_ELEMENT.addEventListener('webkitendfullscreen', () => {
+            if (state.omidState.sessionFinished) return;
+            mediaEvents.playerStateChange(VideoPlayerState.NORMAL);
+        });
+        VIDEO_ELEMENT.addEventListener('webkitbeginfullscreen', () => {
+            if (state.omidState.sessionFinished) return;
+            mediaEvents.playerStateChange(VideoPlayerState.FULLSCREEN);
+        });
+        VIDEO_ELEMENT.onfullscreenchange = (ev) => {
+            if (state.omidState.sessionFinished) return;
+            if (document.fullscreenElement) {
+                mediaEvents.playerStateChange(VideoPlayerState.FULLSCREEN);
+            } else {
+                mediaEvents.playerStateChange(VideoPlayerState.NORMAL);
+            }
+        };
+    </script>
+  </body>
+</html>

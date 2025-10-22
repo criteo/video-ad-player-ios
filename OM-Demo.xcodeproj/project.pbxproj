@@ -1,0 +1,615 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3638F35E299E43780000CD69 /* OMIDSessionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3638F35D299E43780000CD69 /* OMIDSessionInteractor.swift */; };
+		384EB875225C05DF0067A283 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 384EB874225C05DF0067A283 /* README.md */; };
+		38B305CB1F859D2B00557063 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B305CA1F859D2B00557063 /* AppDelegate.swift */; };
+		38B305D21F859D2B00557063 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38B305D11F859D2B00557063 /* Assets.xcassets */; };
+		38B305E11F859DA500557063 /* AdListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B305DD1F859DA500557063 /* AdListViewController.swift */; };
+		38FE29971F8BA9B40049ABFC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38B305E61F859DDE00557063 /* LaunchScreen.storyboard */; };
+		65A041B32081224C0033463C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A041B22081224C0033463C /* Constants.swift */; };
+		9F03F9F42E7BB833007335DA /* CriteoAdSwiftUIListView_Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F03F9F32E7BB833007335DA /* CriteoAdSwiftUIListView_Sample.swift */; };
+		9F03F9F82E7BEC5D007335DA /* CriteoLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F03F9F72E7BEC5D007335DA /* CriteoLogger.swift */; };
+		9F0BFE7D2E1C0A630024B33A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0BFE7C2E1C0A630024B33A /* NetworkManager.swift */; };
+		9F1BF9C12E66A48400C8E586 /* CriteoAdCell_Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1BF9C02E66A46C00C8E586 /* CriteoAdCell_Sample.swift */; };
+		9F9102362E49CBCC007E7B61 /* BeaconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9102352E49CBCC007E7B61 /* BeaconManager.swift */; };
+		9F91023D2E4EE62F007E7B61 /* ClosedCaptionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F91023C2E4EE62A007E7B61 /* ClosedCaptionsManager.swift */; };
+		9F91023F2E5C18E5007E7B61 /* CriteoVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F91023E2E5C18DF007E7B61 /* CriteoVideoPlayer.swift */; };
+		9F9102472E5C44DB007E7B61 /* ContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9102462E5C44DB007E7B61 /* ContentTableViewCell.swift */; };
+		9F91024B2E5D8E5A007E7B61 /* CriteoVideoAdWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F91024A2E5D8E5A007E7B61 /* CriteoVideoAdWrapper.swift */; };
+		9F91024F2E5D966B007E7B61 /* CriteoAdSingleVideoController_Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F91024E2E5D9660007E7B61 /* CriteoAdSingleVideoController_Sample.swift */; };
+		9F9102512E5DAD3F007E7B61 /* CriteoAdTableViewController_Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9102502E5DAD2C007E7B61 /* CriteoAdTableViewController_Sample.swift */; };
+		9FD96BEE2E03BB2C0021371C /* VastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD96BED2E03BB220021371C /* VastManager.swift */; };
+		A1A9E91623C922F900C87B03 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A9E91523C922F900C87B03 /* SceneDelegate.swift */; };
+		BB3C58212CAE7636008392B7 /* CreativeDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C581D2CAE7636008392B7 /* CreativeDownloader.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9F0BFEBF2E45B8090024B33A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 38B305BF1F859D2B00557063 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 38B305C61F859D2B00557063;
+			remoteInfo = "OM-Demo";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3638F35D299E43780000CD69 /* OMIDSessionInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMIDSessionInteractor.swift; sourceTree = "<group>"; };
+		384EB874225C05DF0067A283 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.markdown; };
+		38B305C71F859D2B00557063 /* OM-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "OM-Demo.app"; path = "/Users/s.gugo/Desktop/vast-omid-player-demo-ios-initial/build/Debug-iphoneos/OM-Demo.app"; sourceTree = "<absolute>"; };
+		38B305CA1F859D2B00557063 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		38B305D11F859D2B00557063 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		38B305D61F859D2B00557063 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		38B305DD1F859DA500557063 /* AdListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdListViewController.swift; sourceTree = "<group>"; };
+		38B305E71F859DDE00557063 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		65A041B22081224C0033463C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		9F03F9F32E7BB833007335DA /* CriteoAdSwiftUIListView_Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriteoAdSwiftUIListView_Sample.swift; sourceTree = "<group>"; };
+		9F03F9F72E7BEC5D007335DA /* CriteoLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriteoLogger.swift; sourceTree = "<group>"; };
+		9F0BFE7C2E1C0A630024B33A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		9F0BFEBB2E45B8090024B33A /* OM-DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "OM-DemoTests.xctest"; path = "/Users/s.gugo/Desktop/vast-omid-player-demo-ios-initial/build/Debug-iphoneos/OM-Demo.app/PlugIns/OM-DemoTests.xctest"; sourceTree = "<absolute>"; };
+		9F1BF9C02E66A46C00C8E586 /* CriteoAdCell_Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriteoAdCell_Sample.swift; sourceTree = "<group>"; };
+		9F9102352E49CBCC007E7B61 /* BeaconManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconManager.swift; sourceTree = "<group>"; };
+		9F91023C2E4EE62A007E7B61 /* ClosedCaptionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosedCaptionsManager.swift; sourceTree = "<group>"; };
+		9F91023E2E5C18DF007E7B61 /* CriteoVideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriteoVideoPlayer.swift; sourceTree = "<group>"; };
+		9F9102462E5C44DB007E7B61 /* ContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTableViewCell.swift; sourceTree = "<group>"; };
+		9F91024A2E5D8E5A007E7B61 /* CriteoVideoAdWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriteoVideoAdWrapper.swift; sourceTree = "<group>"; };
+		9F91024E2E5D9660007E7B61 /* CriteoAdSingleVideoController_Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriteoAdSingleVideoController_Sample.swift; sourceTree = "<group>"; };
+		9F9102502E5DAD2C007E7B61 /* CriteoAdTableViewController_Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriteoAdTableViewController_Sample.swift; sourceTree = "<group>"; };
+		9FD96BED2E03BB220021371C /* VastManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastManager.swift; sourceTree = "<group>"; };
+		A1A9E91523C922F900C87B03 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		BB3C581D2CAE7636008392B7 /* CreativeDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreativeDownloader.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		38B305C41F859D2B00557063 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9F0BFEB82E45B8090024B33A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2B819E662318644700487326 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		38B305BE1F859D2B00557063 = {
+			isa = PBXGroup;
+			children = (
+				384EB874225C05DF0067A283 /* README.md */,
+				38B305C91F859D2B00557063 /* OM-Demo */,
+				9F0BFEC52E45B81D0024B33A /* OM-DemoTests */,
+				38B305C81F859D2B00557063 /* Products */,
+				2B819E662318644700487326 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		38B305C81F859D2B00557063 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		38B305C91F859D2B00557063 /* OM-Demo */ = {
+			isa = PBXGroup;
+			children = (
+				9F1BF9BF2E669A9C00C8E586 /* Main */,
+				9F1BF9BD2E669A1C00C8E586 /* CriteoPlayer + Wrapper */,
+				9F91024D2E5D9653007E7B61 /* Examples Final */,
+				9F91023B2E49D388007E7B61 /* Utilities */,
+				9FD96BEC2E03BB160021371C /* Managers */,
+				38B305E61F859DDE00557063 /* LaunchScreen.storyboard */,
+				38B305D11F859D2B00557063 /* Assets.xcassets */,
+				38B305D61F859D2B00557063 /* Info.plist */,
+			);
+			path = "OM-Demo";
+			sourceTree = "<group>";
+		};
+		9F0BFEC52E45B81D0024B33A /* OM-DemoTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "OM-DemoTests";
+			sourceTree = "<group>";
+		};
+		9F1BF9BD2E669A1C00C8E586 /* CriteoPlayer + Wrapper */ = {
+			isa = PBXGroup;
+			children = (
+				9F91023E2E5C18DF007E7B61 /* CriteoVideoPlayer.swift */,
+				9F91024A2E5D8E5A007E7B61 /* CriteoVideoAdWrapper.swift */,
+			);
+			path = "CriteoPlayer + Wrapper";
+			sourceTree = "<group>";
+		};
+		9F1BF9BE2E669A4400C8E586 /* Supporting Views */ = {
+			isa = PBXGroup;
+			children = (
+				9F1BF9C02E66A46C00C8E586 /* CriteoAdCell_Sample.swift */,
+				9F9102462E5C44DB007E7B61 /* ContentTableViewCell.swift */,
+			);
+			path = "Supporting Views";
+			sourceTree = "<group>";
+		};
+		9F1BF9BF2E669A9C00C8E586 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				38B305CA1F859D2B00557063 /* AppDelegate.swift */,
+				38B305DD1F859DA500557063 /* AdListViewController.swift */,
+				A1A9E91523C922F900C87B03 /* SceneDelegate.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		9F91023B2E49D388007E7B61 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				65A041B22081224C0033463C /* Constants.swift */,
+				9F03F9F72E7BEC5D007335DA /* CriteoLogger.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		9F91024D2E5D9653007E7B61 /* Examples Final */ = {
+			isa = PBXGroup;
+			children = (
+				9F1BF9BE2E669A4400C8E586 /* Supporting Views */,
+				9F91024E2E5D9660007E7B61 /* CriteoAdSingleVideoController_Sample.swift */,
+				9F9102502E5DAD2C007E7B61 /* CriteoAdTableViewController_Sample.swift */,
+				9F03F9F32E7BB833007335DA /* CriteoAdSwiftUIListView_Sample.swift */,
+			);
+			path = "Examples Final";
+			sourceTree = "<group>";
+		};
+		9FD96BEC2E03BB160021371C /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				9F91023C2E4EE62A007E7B61 /* ClosedCaptionsManager.swift */,
+				9F0BFE7C2E1C0A630024B33A /* NetworkManager.swift */,
+				9FD96BED2E03BB220021371C /* VastManager.swift */,
+				9F9102352E49CBCC007E7B61 /* BeaconManager.swift */,
+				BB3C581D2CAE7636008392B7 /* CreativeDownloader.swift */,
+				3638F35D299E43780000CD69 /* OMIDSessionInteractor.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		38B305C61F859D2B00557063 /* OM-Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 38B305D91F859D2B00557063 /* Build configuration list for PBXNativeTarget "OM-Demo" */;
+			buildPhases = (
+				38B305C31F859D2B00557063 /* Sources */,
+				38B305C41F859D2B00557063 /* Frameworks */,
+				38B305C51F859D2B00557063 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "OM-Demo";
+			productName = "OM-Demo";
+			productReference = 38B305C71F859D2B00557063 /* OM-Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9F0BFEBA2E45B8090024B33A /* OM-DemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9F0BFEC12E45B8090024B33A /* Build configuration list for PBXNativeTarget "OM-DemoTests" */;
+			buildPhases = (
+				9F0BFEB72E45B8090024B33A /* Sources */,
+				9F0BFEB82E45B8090024B33A /* Frameworks */,
+				9F0BFEB92E45B8090024B33A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9F0BFEC02E45B8090024B33A /* PBXTargetDependency */,
+			);
+			name = "OM-DemoTests";
+			packageProductDependencies = (
+			);
+			productName = "OM-DemoTests";
+			productReference = 9F0BFEBB2E45B8090024B33A /* OM-DemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		38B305BF1F859D2B00557063 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = "Open Measurement Working Group";
+				TargetAttributes = {
+					38B305C61F859D2B00557063 = {
+						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 1030;
+						ProvisioningStyle = Automatic;
+					};
+					9F0BFEBA2E45B8090024B33A = {
+						CreatedOnToolsVersion = 16.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 38B305C61F859D2B00557063;
+					};
+				};
+			};
+			buildConfigurationList = 38B305C21F859D2B00557063 /* Build configuration list for PBXProject "OM-Demo" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 38B305BE1F859D2B00557063;
+			productRefGroup = 38B305C81F859D2B00557063 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				38B305C61F859D2B00557063 /* OM-Demo */,
+				9F0BFEBA2E45B8090024B33A /* OM-DemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		38B305C51F859D2B00557063 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				384EB875225C05DF0067A283 /* README.md in Resources */,
+				38B305D21F859D2B00557063 /* Assets.xcassets in Resources */,
+				38FE29971F8BA9B40049ABFC /* LaunchScreen.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9F0BFEB92E45B8090024B33A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		38B305C31F859D2B00557063 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65A041B32081224C0033463C /* Constants.swift in Sources */,
+				A1A9E91623C922F900C87B03 /* SceneDelegate.swift in Sources */,
+				9F9102512E5DAD3F007E7B61 /* CriteoAdTableViewController_Sample.swift in Sources */,
+				9F03F9F82E7BEC5D007335DA /* CriteoLogger.swift in Sources */,
+				9F91023F2E5C18E5007E7B61 /* CriteoVideoPlayer.swift in Sources */,
+				38B305E11F859DA500557063 /* AdListViewController.swift in Sources */,
+				9FD96BEE2E03BB2C0021371C /* VastManager.swift in Sources */,
+				9F1BF9C12E66A48400C8E586 /* CriteoAdCell_Sample.swift in Sources */,
+				9F0BFE7D2E1C0A630024B33A /* NetworkManager.swift in Sources */,
+				9F91024B2E5D8E5A007E7B61 /* CriteoVideoAdWrapper.swift in Sources */,
+				9F9102362E49CBCC007E7B61 /* BeaconManager.swift in Sources */,
+				BB3C58212CAE7636008392B7 /* CreativeDownloader.swift in Sources */,
+				9F9102472E5C44DB007E7B61 /* ContentTableViewCell.swift in Sources */,
+				9F91024F2E5D966B007E7B61 /* CriteoAdSingleVideoController_Sample.swift in Sources */,
+				9F03F9F42E7BB833007335DA /* CriteoAdSwiftUIListView_Sample.swift in Sources */,
+				38B305CB1F859D2B00557063 /* AppDelegate.swift in Sources */,
+				3638F35E299E43780000CD69 /* OMIDSessionInteractor.swift in Sources */,
+				9F91023D2E4EE62F007E7B61 /* ClosedCaptionsManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9F0BFEB72E45B8090024B33A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9F0BFEC02E45B8090024B33A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 38B305C61F859D2B00557063 /* OM-Demo */;
+			targetProxy = 9F0BFEBF2E45B8090024B33A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		38B305E61F859DDE00557063 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				38B305E71F859DDE00557063 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		38B305D71F859D2B00557063 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
+			};
+			name = Debug;
+		};
+		38B305D81F859D2B00557063 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		38B305DA1F859D2B00557063 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W2S2TG8578;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/OM-Demo",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/OMSDK",
+					"$(PROJECT_DIR)/OMSDK/Service",
+				);
+				INFOPLIST_FILE = "OM-Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/OMSDK",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.omid.reference;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		38B305DB1F859D2B00557063 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W2S2TG8578;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/OM-Demo",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/OMSDK",
+					"$(PROJECT_DIR)/OMSDK/Service",
+				);
+				INFOPLIST_FILE = "OM-Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/OMSDK",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.omid.reference;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		9F0BFEC22E45B8090024B33A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.criteo.OM-DemoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OM-Demo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/OM-Demo";
+			};
+			name = Debug;
+		};
+		9F0BFEC32E45B8090024B33A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.criteo.OM-DemoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OM-Demo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/OM-Demo";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		38B305C21F859D2B00557063 /* Build configuration list for PBXProject "OM-Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				38B305D71F859D2B00557063 /* Debug */,
+				38B305D81F859D2B00557063 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		38B305D91F859D2B00557063 /* Build configuration list for PBXNativeTarget "OM-Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				38B305DA1F859D2B00557063 /* Debug */,
+				38B305DB1F859D2B00557063 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9F0BFEC12E45B8090024B33A /* Build configuration list for PBXNativeTarget "OM-DemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9F0BFEC22E45B8090024B33A /* Debug */,
+				9F0BFEC32E45B8090024B33A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 38B305BF1F859D2B00557063 /* Project object */;
+}

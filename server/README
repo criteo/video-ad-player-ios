@@ -1,0 +1,13 @@
+# Lightweight VAST SERVER
+
+Here is an example of a VAST file with an video MP4 asset and VTT subtitles
+VAST trackers points to a dump URL.
+This is for usage on Android simulator as the URLs in the vast are provided on 10.0.2.2 address.
+
+## Setup
+
+Launch a HTTP server in this folder
+
+```bash
+python3 -m http.server
+```
