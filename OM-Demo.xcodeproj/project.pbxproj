@@ -43,7 +43,6 @@
 /* Begin PBXFileReference section */
 		3638F35D299E43780000CD69 /* OMIDSessionInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMIDSessionInteractor.swift; sourceTree = "<group>"; };
 		384EB874225C05DF0067A283 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.markdown; };
-		38B305C71F859D2B00557063 /* OM-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "OM-Demo.app"; path = "/Users/s.gugo/Desktop/vast-omid-player-demo-ios-initial/build/Debug-iphoneos/OM-Demo.app"; sourceTree = "<absolute>"; };
 		38B305CA1F859D2B00557063 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38B305D11F859D2B00557063 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		38B305D61F859D2B00557063 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -53,7 +52,6 @@
 		9F03F9F32E7BB833007335DA /* CriteoAdSwiftUIListView_Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriteoAdSwiftUIListView_Sample.swift; sourceTree = "<group>"; };
 		9F03F9F72E7BEC5D007335DA /* CriteoLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriteoLogger.swift; sourceTree = "<group>"; };
 		9F0BFE7C2E1C0A630024B33A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		9F0BFEBB2E45B8090024B33A /* OM-DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "OM-DemoTests.xctest"; path = "/Users/s.gugo/Desktop/vast-omid-player-demo-ios-initial/build/Debug-iphoneos/OM-Demo.app/PlugIns/OM-DemoTests.xctest"; sourceTree = "<absolute>"; };
 		9F1BF9C02E66A46C00C8E586 /* CriteoAdCell_Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriteoAdCell_Sample.swift; sourceTree = "<group>"; };
 		9F9102352E49CBCC007E7B61 /* BeaconManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconManager.swift; sourceTree = "<group>"; };
 		9F91023C2E4EE62A007E7B61 /* ClosedCaptionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosedCaptionsManager.swift; sourceTree = "<group>"; };
@@ -62,6 +60,8 @@
 		9F91024A2E5D8E5A007E7B61 /* CriteoVideoAdWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriteoVideoAdWrapper.swift; sourceTree = "<group>"; };
 		9F91024E2E5D9660007E7B61 /* CriteoAdSingleVideoController_Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriteoAdSingleVideoController_Sample.swift; sourceTree = "<group>"; };
 		9F9102502E5DAD2C007E7B61 /* CriteoAdTableViewController_Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriteoAdTableViewController_Sample.swift; sourceTree = "<group>"; };
+		9FBE922F2EBD2E6A0083A50B /* OM-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OM-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FBE92302EBD2E6A0083A50B /* OM-DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "OM-DemoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FD96BED2E03BB220021371C /* VastManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastManager.swift; sourceTree = "<group>"; };
 		A1A9E91523C922F900C87B03 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		BB3C581D2CAE7636008392B7 /* CreativeDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreativeDownloader.swift; sourceTree = "<group>"; };
@@ -97,7 +97,6 @@
 			children = (
 				384EB874225C05DF0067A283 /* README.md */,
 				38B305C91F859D2B00557063 /* OM-Demo */,
-				9F0BFEC52E45B81D0024B33A /* OM-DemoTests */,
 				38B305C81F859D2B00557063 /* Products */,
 				2B819E662318644700487326 /* Frameworks */,
 			);
@@ -106,6 +105,8 @@
 		38B305C81F859D2B00557063 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				9FBE922F2EBD2E6A0083A50B /* OM-Demo.app */,
+				9FBE92302EBD2E6A0083A50B /* OM-DemoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -123,13 +124,6 @@
 				38B305D61F859D2B00557063 /* Info.plist */,
 			);
 			path = "OM-Demo";
-			sourceTree = "<group>";
-		};
-		9F0BFEC52E45B81D0024B33A /* OM-DemoTests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "OM-DemoTests";
 			sourceTree = "<group>";
 		};
 		9F1BF9BD2E669A1C00C8E586 /* CriteoPlayer + Wrapper */ = {
@@ -210,7 +204,7 @@
 			);
 			name = "OM-Demo";
 			productName = "OM-Demo";
-			productReference = 38B305C71F859D2B00557063 /* OM-Demo.app */;
+			productReference = 9FBE922F2EBD2E6A0083A50B /* OM-Demo.app */;
 			productType = "com.apple.product-type.application";
 		};
 		9F0BFEBA2E45B8090024B33A /* OM-DemoTests */ = {
@@ -230,7 +224,7 @@
 			packageProductDependencies = (
 			);
 			productName = "OM-DemoTests";
-			productReference = 9F0BFEBB2E45B8090024B33A /* OM-DemoTests.xctest */;
+			productReference = 9FBE92302EBD2E6A0083A50B /* OM-DemoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */

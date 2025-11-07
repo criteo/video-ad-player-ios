@@ -17,6 +17,13 @@ class CriteoAdTableViewController_Sample: UITableViewController {
 
     // MARK: - Properties
 
+    /// Track last applied visibility state per indexPath (true = playing)
+    private var lastVisibilityState: [IndexPath: Bool] = [:]
+    /// Throttle for scroll-driven updates
+    private var lastVisibilityUpdateTimestamp: TimeInterval = 0
+     /// Minimum interval between visibility recomputations during scrolling (seconds)
+    private let visibilityUpdateThrottleInterval: TimeInterval = 0.12
+
     /// Sample data for the feed (20 items with video ad at index 15)
     private var feedItems: [FeedItem] = []
 
@@ -122,12 +129,9 @@ class CriteoAdTableViewController_Sample: UITableViewController {
     private func setupWrapperCallbacks(_ wrapper: CriteoVideoAdWrapper, for indexPath: IndexPath) {
         // Video loaded callback
         wrapper.onVideoLoaded = { [weak self] in
-            // Only start playing if the cell is actually visible
-            if let self = self,
-               let visibleIndexPaths = self.tableView.indexPathsForVisibleRows,
-               visibleIndexPaths.contains(indexPath) {
-                self.handleVideoVisibility(at: indexPath, isVisible: true)
-            }
+        // Start playing only when the row center is visible (decided below)
+            guard let self = self else { return }
+            self.updateVideoVisibility(at: indexPath)
         }
 
         // No-op: pause/tap callbacks not needed for this sample but can be used as necessary for tracking purposes
@@ -140,16 +144,48 @@ class CriteoAdTableViewController_Sample: UITableViewController {
 
     // MARK: - Video Management
 
-    /// Handles play/pause logic based on video cell visibility in the table view.
-    private func handleVideoVisibility(at indexPath: IndexPath, isVisible: Bool) {
-        guard let wrapper = videoAdWrappers[indexPath] else {
-            CriteoLogger.warning("⚠️ No wrapper found for \(indexPath)", category: .video)
-            return
-        }
-        if isVisible {
-            wrapper.resumePlayback()
+    /// Center-based visibility rule for a single row.
+    ///
+    /// We treat the row's geometric center as the decision point: if the center
+    /// lies inside the current viewport, we resume playback; if it leaves the
+    /// viewport, we pause and detach. This avoids percentage thresholds, reduces
+    /// jitter during scroll, and keeps one clear transition point.
+    private func updateVideoVisibility(at indexPath: IndexPath) {
+        guard let wrapper = videoAdWrappers[indexPath] else { return }
+
+        // Viewport rect in tableView coordinates
+        let viewport = CGRect(origin: tableView.contentOffset, size: tableView.bounds.size)
+        // Row rect and its center point
+        let rowRect = tableView.rectForRow(at: indexPath)
+        let centerPoint = CGPoint(x: rowRect.midX, y: rowRect.midY)
+
+        let centerIsVisible = viewport.contains(centerPoint)
+        let currentlyPlaying = lastVisibilityState[indexPath] ?? false
+
+        if centerIsVisible {
+            if !currentlyPlaying {
+                wrapper.resumePlayback()
+                lastVisibilityState[indexPath] = true
+            }
         } else {
-            wrapper.pauseAndDetach()
+            if currentlyPlaying {
+                // Always detach when center is out of viewport (center-based)
+                wrapper.pauseAndDetach()
+                lastVisibilityState[indexPath] = false
+            }
+        }
+    }
+
+    /// Iterate visible rows and apply the center-based visibility rule.
+    ///
+    /// This is called on scroll (throttled) and when cells appear, delegating
+    /// the actual decision to `updateVideoVisibility(at:)`.
+    private func updateVisibleVideos() {
+        guard let visibleIndexPaths = tableView.indexPathsForVisibleRows else { return }
+        for indexPath in visibleIndexPaths {
+            if case .videoAd = feedItems[indexPath.row] {
+                updateVideoVisibility(at: indexPath)
+            }
         }
     }
 
@@ -196,16 +232,17 @@ extension CriteoAdTableViewController_Sample {
 extension CriteoAdTableViewController_Sample {
 
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        // Handle video visibility when cell becomes visible
+        // Apply center-based visibility rule when cell becomes visible
         if case .videoAd = feedItems[indexPath.row], videoAdWrappers[indexPath] != nil {
-            handleVideoVisibility(at: indexPath, isVisible: true)
+            updateVideoVisibility(at: indexPath)
         }
     }
 
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         // Handle video visibility when cell goes out of view
         if case .videoAd = feedItems[indexPath.row], videoAdWrappers[indexPath] != nil {
-            handleVideoVisibility(at: indexPath, isVisible: false)
+            videoAdWrappers[indexPath]?.pauseAndDetach()
+            lastVisibilityState[indexPath] = false
         }
     }
 
@@ -216,6 +253,16 @@ extension CriteoAdTableViewController_Sample {
         case .videoAd:
             // 16:9 aspect ratio for video
             return tableView.bounds.width * 9.0 / 16.0 + 120 // Add space for header/footer
+        }
+    }
+
+    // Keep video state in sync while scrolling using center-based visibility rule
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // Throttle updates to ~8 fps to avoid jitter while scrolling
+        let now = CFAbsoluteTimeGetCurrent()
+        if now - lastVisibilityUpdateTimestamp > visibilityUpdateThrottleInterval {
+            lastVisibilityUpdateTimestamp = now
+            updateVisibleVideos()
         }
     }
 }

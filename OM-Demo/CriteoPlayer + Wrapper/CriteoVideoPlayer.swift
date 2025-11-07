@@ -491,6 +491,9 @@ final class CriteoVideoPlayer: UIView {
         
         // Stop OMID session
         stopOMIDSession()
+
+        // Cancel any in-flight or scheduled beacon retries to avoid work after teardown
+        beaconManager.cancelAllBeacons()
         
         // Remove time observer
         if let timeObserver = timeObserver {

@@ -8,6 +8,7 @@
 
 import SwiftUI
 import Foundation
+import UIKit
 
 struct CriteoAdSwiftUIListView_Sample: View {
     @StateObject private var viewModel = VideoAdViewModel(vastURL: Constants.vastURL)
@@ -47,19 +48,41 @@ struct CriteoAdSwiftUIListView_Sample: View {
 // MARK: - Video Ad Cell
 struct VideoAdCell: View {
     let wrapper: CriteoVideoAdWrapper
+    @State private var isCenterVisible: Bool = false
 
     var body: some View {
         ZStack {
             // Simple video player - use preloaded shared wrapper
             CriteoVideoAdSwiftUIView(wrapper: wrapper)
         }
-        .onAppear {
-            // Signal that cell appeared - start playing if loaded
-            NotificationCenter.default.post(name: NSNotification.Name("VideoCellAppeared"), object: nil)
-        }
+        .background(
+            // Center-based visibility rule for SwiftUI cells.
+            // We measure the view's frame in global coordinates and compute its
+            // center point. If the center is inside the screen bounds, we
+            // resume playback; otherwise, we pause and detach.
+            GeometryReader { geo in
+                let frame = geo.frame(in: .global)
+                let center = CGPoint(x: frame.midX, y: frame.midY)
+                let screenBounds = UIScreen.main.bounds
+
+                // Compute center visibility and apply wrapper actions without causing view update loops
+                DispatchQueue.main.async {
+                    let centerVisibleNow = screenBounds.contains(center)
+                    if centerVisibleNow != isCenterVisible {
+                        isCenterVisible = centerVisibleNow
+                        if centerVisibleNow {
+                            wrapper.resumePlayback()
+                        } else {
+                            wrapper.pauseAndDetach()
+                        }
+                    }
+                }
+
+                return Color.clear
+            }
+        )
         .onDisappear {
-            // Signal that cell disappeared (don't cleanup yet, just pause)
-            NotificationCenter.default.post(name: NSNotification.Name("VideoCellDisappeared"), object: nil)
+            wrapper.pauseAndDetach()
         }
     }
 }
@@ -119,47 +142,13 @@ struct CriteoVideoAdSwiftUIView: UIViewRepresentable {
         var wrapper: CriteoVideoAdWrapper?
 
         init() {
-            // Listen for visibility notifications
-            NotificationCenter.default.addObserver(
-                self,
-                selector: #selector(handleCellAppeared),
-                name: NSNotification.Name("VideoCellAppeared"),
-                object: nil
-            )
-
-            NotificationCenter.default.addObserver(
-                self,
-                selector: #selector(handleCellDisappeared),
-                name: NSNotification.Name("VideoCellDisappeared"),
-                object: nil
-            )
-
+            // Listen for view-level disappearance to fully clean up
             NotificationCenter.default.addObserver(
                 self,
                 selector: #selector(handleViewDisappeared),
                 name: NSNotification.Name("SwiftUIViewDisappeared"),
                 object: nil
             )
-        }
-
-        @objc private func handleCellAppeared() {
-            CriteoLogger.debug("Video cell appeared - resuming playback", category: .video)
-            if let wrapper = wrapper {
-                CriteoLogger.debug("Wrapper exists, attempting to resume playback...", category: .video)
-                // Always resume when cell appears (mirror UIKit behavior)
-                wrapper.resumePlayback()
-                CriteoLogger.debug("resumePlayback() called", category: .video)
-            } else {
-                CriteoLogger.error("No wrapper available for resume", category: .video)
-            }
-        }
-
-        @objc private func handleCellDisappeared() {
-            CriteoLogger.debug("Video cell disappeared - pausing and detaching", category: .video)
-            if let wrapper = wrapper {
-                // This properly cleans up resources without marking as user-paused
-                wrapper.pauseAndDetach()
-            }
         }
 
         @objc private func handleViewDisappeared() {
