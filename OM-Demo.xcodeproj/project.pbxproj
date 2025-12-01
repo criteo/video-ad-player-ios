@@ -25,6 +25,7 @@
 		9F91024B2E5D8E5A007E7B61 /* CriteoVideoAdWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F91024A2E5D8E5A007E7B61 /* CriteoVideoAdWrapper.swift */; };
 		9F91024F2E5D966B007E7B61 /* CriteoAdSingleVideoController_Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F91024E2E5D9660007E7B61 /* CriteoAdSingleVideoController_Sample.swift */; };
 		9F9102512E5DAD3F007E7B61 /* CriteoAdTableViewController_Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9102502E5DAD2C007E7B61 /* CriteoAdTableViewController_Sample.swift */; };
+		9FBE92342EDDC8B20083A50B /* OMIDSessionInteractor+Stubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBE92332EDDC8A20083A50B /* OMIDSessionInteractor+Stubs.swift */; };
 		9FD96BEE2E03BB2C0021371C /* VastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD96BED2E03BB220021371C /* VastManager.swift */; };
 		A1A9E91623C922F900C87B03 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A9E91523C922F900C87B03 /* SceneDelegate.swift */; };
 		BB3C58212CAE7636008392B7 /* CreativeDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C581D2CAE7636008392B7 /* CreativeDownloader.swift */; };
@@ -62,6 +63,7 @@
 		9F9102502E5DAD2C007E7B61 /* CriteoAdTableViewController_Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriteoAdTableViewController_Sample.swift; sourceTree = "<group>"; };
 		9FBE922F2EBD2E6A0083A50B /* OM-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OM-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FBE92302EBD2E6A0083A50B /* OM-DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "OM-DemoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FBE92332EDDC8A20083A50B /* OMIDSessionInteractor+Stubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OMIDSessionInteractor+Stubs.swift"; sourceTree = "<group>"; };
 		9FD96BED2E03BB220021371C /* VastManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VastManager.swift; sourceTree = "<group>"; };
 		A1A9E91523C922F900C87B03 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		BB3C581D2CAE7636008392B7 /* CreativeDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreativeDownloader.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				9F9102352E49CBCC007E7B61 /* BeaconManager.swift */,
 				BB3C581D2CAE7636008392B7 /* CreativeDownloader.swift */,
 				3638F35D299E43780000CD69 /* OMIDSessionInteractor.swift */,
+				9FBE92332EDDC8A20083A50B /* OMIDSessionInteractor+Stubs.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				9F03F9F42E7BB833007335DA /* CriteoAdSwiftUIListView_Sample.swift in Sources */,
 				38B305CB1F859D2B00557063 /* AppDelegate.swift in Sources */,
 				3638F35E299E43780000CD69 /* OMIDSessionInteractor.swift in Sources */,
+				9FBE92342EDDC8B20083A50B /* OMIDSessionInteractor+Stubs.swift in Sources */,
 				9F91023D2E4EE62F007E7B61 /* ClosedCaptionsManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -465,7 +469,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W2S2TG8578;
+				DEVELOPMENT_TEAM = H5U56L4EAR;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/OM-Demo",
@@ -496,7 +500,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W2S2TG8578;
+				DEVELOPMENT_TEAM = H5U56L4EAR;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/OM-Demo",
