@@ -30,7 +30,7 @@ class CriteoAdSingleVideoController_Sample: UIViewController {
     
     private func setupCriteoVideoAd() {
         // Create the video ad wrapper with the working VAST URL from the demo
-        let config = CriteoVideoAdConfiguration(autoLoad: true, startsMuted: false)
+        let config = CriteoVideoAdConfiguration(autoLoad: true, startsMuted: true)
         let videoAd = CriteoVideoAdWrapper(vastURL: Constants.vastURL, configuration: config)
         self.videoAd = videoAd  // Store reference for cleanup
         
