@@ -294,6 +294,21 @@ public class CriteoVideoAdWrapper: UIView {
         
         if let player = videoPlayer {
             wrapperLog("Resuming existing video player", category: .video)
+            
+            // Re-parent player into wrapper view hierarchy if it was detached
+            if player.superview !== self {
+                player.alpha = 0.0
+                addSubview(player)
+                player.translatesAutoresizingMaskIntoConstraints = false
+                NSLayoutConstraint.activate([
+                    player.topAnchor.constraint(equalTo: topAnchor),
+                    player.leadingAnchor.constraint(equalTo: leadingAnchor),
+                    player.trailingAnchor.constraint(equalTo: trailingAnchor),
+                    player.bottomAnchor.constraint(equalTo: bottomAnchor)
+                ])
+                bringSubviewToFront(player)
+            }
+            
             // Player already exists, just resume
             if !isUserPaused && lastPlaybackPosition > 0 {
                 // Use precise seeking for consistent timing accuracy across all scenarios
@@ -303,8 +318,13 @@ public class CriteoVideoAdWrapper: UIView {
                     } else {
                         self?.wrapperLog("Precise seek failed for existing player", category: .video)
                     }
+                    player.play()
                 }
                 self.wrapperLog("Precise seek initiated for existing player to \(lastPlaybackPosition)s", category: .video)
+
+                UIView.animate(withDuration: 0.3, delay: 0.1, options: .curveEaseOut) {
+                    player.alpha = 1.0
+                }
             } else if !isUserPaused {
                 player.play()
 
@@ -353,9 +373,6 @@ public class CriteoVideoAdWrapper: UIView {
             self.lastPlaybackPosition = player.getCurrentTime()
             self.wrapperLog("Saved position on detach: \(self.lastPlaybackPosition)s", category: .video)
         }
-        
-        // Clear the video player reference so resumePlayback() will create a fresh one
-        videoPlayer = nil
         
         wrapperLog("Video player detached and cleared, will create fresh player on resume", category: .video)
     }
