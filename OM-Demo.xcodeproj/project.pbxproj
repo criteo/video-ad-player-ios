@@ -238,7 +238,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1130;
-				ORGANIZATIONNAME = "Open Measurement Working Group";
+				ORGANIZATIONNAME = Criteo;
 				TargetAttributes = {
 					38B305C61F859D2B00557063 = {
 						CreatedOnToolsVersion = 9.0;
