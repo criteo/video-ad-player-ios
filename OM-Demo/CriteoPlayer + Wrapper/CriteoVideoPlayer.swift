@@ -176,6 +176,7 @@ final class CriteoVideoPlayer: UIView {
         super.init(frame: frame)
         setupUI()
         setupGestures()
+        registerLifecycleObservers()
         CriteoLogger.debug("CriteoVideoPlayer initialized", category: .video)
     }
     
@@ -183,10 +184,12 @@ final class CriteoVideoPlayer: UIView {
         super.init(coder: coder)
         setupUI()
         setupGestures()
+        registerLifecycleObservers()
         CriteoLogger.debug("CriteoVideoPlayer initialized from coder", category: .video)
     }
     
     deinit {
+        NotificationCenter.default.removeObserver(self)
         cleanup()
         CriteoLogger.debug("CriteoVideoPlayer deallocated", category: .video)
     }
@@ -611,6 +614,9 @@ final class CriteoVideoPlayer: UIView {
     
     // Track user pause state to prevent auto-play when user manually paused
     private var isUserPaused: Bool = false
+
+    // Track whether video was playing before the app resigned active (e.g., opening Safari)
+    private var wasPlayingBeforeResignActive: Bool = false
 
     // Track the last playback position for resuming after manual pause
     private var lastPlaybackPosition: TimeInterval?
@@ -1137,6 +1143,40 @@ private extension CriteoVideoPlayer {
         
         delegate?.videoPlayerDidReceiveUserInteraction(self)
         playerLog("Video player received user interaction", category: .video)
+    }
+}
+
+// MARK: - App Lifecycle
+
+private extension CriteoVideoPlayer {
+
+    func registerLifecycleObservers() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleWillResignActive),
+            name: UIApplication.willResignActiveNotification,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleDidBecomeActive),
+            name: UIApplication.didBecomeActiveNotification,
+            object: nil
+        )
+    }
+
+    @objc func handleWillResignActive() {
+        wasPlayingBeforeResignActive = (playbackState == .playing)
+    }
+
+    @objc func handleDidBecomeActive() {
+        if wasPlayingBeforeResignActive && !isUserPaused && playbackState != .finished {
+            play()
+            updatePlayButtonImage(isPlaying: true)
+        } else {
+            updatePlayButtonImage(isPlaying: playbackState == .playing)
+        }
+        wasPlayingBeforeResignActive = false
     }
 }
 

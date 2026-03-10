@@ -44,6 +44,11 @@ class CriteoAdTableViewController_Sample: UITableViewController {
         // Pause any currently playing video when leaving
         pauseAllVideos()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateVisibleVideos()
+    }
 
     deinit {
         // Clean up all video wrappers
