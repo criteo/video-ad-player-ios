@@ -216,6 +216,7 @@ final class CriteoVideoPlayer: UIView {
         
         do {
             try closedCaptionManager.load(from: closedCaptionURL)
+            hasClosedCaptionsAvailable = true
             CriteoLogger.info("Closed captions loaded successfully", category: .video)
         } catch {
             CriteoLogger.error("Failed to load closed captions: \(error.localizedDescription)", category: .video)
@@ -376,7 +377,7 @@ final class CriteoVideoPlayer: UIView {
             self.playButton.isHidden = false
             self.muteButton.isHidden = false
             self.durationLabel.isHidden = false
-            self.closedCaptionButton.isHidden = false
+            self.closedCaptionButton.isHidden = !self.hasClosedCaptionsAvailable
         }
     }
     
@@ -521,6 +522,7 @@ final class CriteoVideoPlayer: UIView {
         hasReachedQuartiles.removeAll()
         currentQuartile = .start
         playbackState = .loading
+        hasClosedCaptionsAvailable = false
         // Note: Don't reset isUserPaused here - it should persist across cleanup
         // so the table controller can check it and preserve user's pause intention
     }
@@ -718,6 +720,7 @@ private extension CriteoVideoPlayer {
         closedCaptionButton.layer.cornerRadius = 4 // Same as other controls
         closedCaptionButton.isSelected = isClosedCaptionEnabled
         closedCaptionButton.addTarget(self, action: #selector(closedCaptionButtonTapped), for: .touchUpInside)
+        closedCaptionButton.isHidden = true
         controlsContainerView.addSubview(closedCaptionButton)
     }
     
