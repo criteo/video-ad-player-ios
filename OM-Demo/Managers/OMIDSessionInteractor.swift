@@ -2,9 +2,6 @@
 //  OMIDHelper.swift
 //  OM-TestApp
 //
-//  Created by Michele Simone on 14/11/2022.
-//  Copyright © 2022 IAB Techlab. All rights reserved.
-//
 
 import Foundation
 import UIKit
