@@ -2,6 +2,8 @@
 //  OMIDSessionInteractor+Stubs.swift
 //  OM-Demo
 //
+//  Copyright © 2026 Criteo. All rights reserved.
+//
 
 // Note: This file provides a no-op fallback for OMID. It is compiled only when
 // OMSDK_Criteo cannot be imported (see the #if !canImport(OMSDK_Criteo) guard below).

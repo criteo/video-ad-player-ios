@@ -2,6 +2,8 @@
 //  CriteoVideoAdWrapper.swift
 //  OM-Demo
 //
+//  Copyright © 2026 Criteo. All rights reserved.
+//
 
 import UIKit
 import AVFoundation

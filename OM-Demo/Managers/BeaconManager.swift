@@ -2,6 +2,8 @@
 //  BeaconManager.swift
 //  OM-Demo
 //
+//  Copyright © 2026 Criteo. All rights reserved.
+//
 
 import Foundation
 

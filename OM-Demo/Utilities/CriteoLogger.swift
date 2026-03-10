@@ -2,6 +2,8 @@
 //  Logger.swift
 //  OM-Demo
 //
+//  Copyright © 2026 Criteo. All rights reserved.
+//
 
 /*
 Logging System for OM-Demo

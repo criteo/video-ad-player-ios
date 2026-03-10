@@ -2,6 +2,8 @@
 //  OMIDHelper.swift
 //  OM-TestApp
 //
+//  Copyright © 2026 Criteo. All rights reserved.
+//
 
 import Foundation
 import UIKit
