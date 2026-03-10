@@ -2,8 +2,7 @@
 //  CreativeDownloader.swift
 //  OM-Demo
 //
-//  Created by Julien AMAR on 10/2/24.
-//  Copyright © 2024 Open Measurement Working Group. All rights reserved.
+//  Copyright © 2026 Criteo. All rights reserved.
 //
 
 import Foundation

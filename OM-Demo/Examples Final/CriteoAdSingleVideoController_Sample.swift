@@ -2,8 +2,7 @@
 //  SingleVideoController.swift
 //  OM-Demo
 //
-//  Created by Serxhio Gugo on 8/26/25.
-//  Copyright © 2025 Open Measurement Working Group. All rights reserved.
+//  Copyright © 2026 Criteo. All rights reserved.
 //
 
 import UIKit

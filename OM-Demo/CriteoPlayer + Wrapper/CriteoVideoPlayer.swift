@@ -2,8 +2,7 @@
 //  CriteoVideoPlayer.swift
 //  OM-Demo
 //
-//  Created by Serxhio Gugo on 8/22/25.
-//  Copyright © 2025 Open Measurement Working Group. All rights reserved.
+//  Copyright © 2026 Criteo. All rights reserved.
 //
 
 import UIKit
@@ -176,6 +175,7 @@ final class CriteoVideoPlayer: UIView {
         super.init(frame: frame)
         setupUI()
         setupGestures()
+        registerLifecycleObservers()
         CriteoLogger.debug("CriteoVideoPlayer initialized", category: .video)
     }
     
@@ -183,10 +183,12 @@ final class CriteoVideoPlayer: UIView {
         super.init(coder: coder)
         setupUI()
         setupGestures()
+        registerLifecycleObservers()
         CriteoLogger.debug("CriteoVideoPlayer initialized from coder", category: .video)
     }
     
     deinit {
+        NotificationCenter.default.removeObserver(self)
         cleanup()
         CriteoLogger.debug("CriteoVideoPlayer deallocated", category: .video)
     }
@@ -213,6 +215,7 @@ final class CriteoVideoPlayer: UIView {
         
         do {
             try closedCaptionManager.load(from: closedCaptionURL)
+            hasClosedCaptionsAvailable = true
             CriteoLogger.info("Closed captions loaded successfully", category: .video)
         } catch {
             CriteoLogger.error("Failed to load closed captions: \(error.localizedDescription)", category: .video)
@@ -373,7 +376,7 @@ final class CriteoVideoPlayer: UIView {
             self.playButton.isHidden = false
             self.muteButton.isHidden = false
             self.durationLabel.isHidden = false
-            self.closedCaptionButton.isHidden = false
+            self.closedCaptionButton.isHidden = !self.hasClosedCaptionsAvailable
         }
     }
     
@@ -518,6 +521,7 @@ final class CriteoVideoPlayer: UIView {
         hasReachedQuartiles.removeAll()
         currentQuartile = .start
         playbackState = .loading
+        hasClosedCaptionsAvailable = false
         // Note: Don't reset isUserPaused here - it should persist across cleanup
         // so the table controller can check it and preserve user's pause intention
     }
@@ -611,6 +615,9 @@ final class CriteoVideoPlayer: UIView {
     
     // Track user pause state to prevent auto-play when user manually paused
     private var isUserPaused: Bool = false
+
+    // Track whether video was playing before the app resigned active (e.g., opening Safari)
+    private var wasPlayingBeforeResignActive: Bool = false
 
     // Track the last playback position for resuming after manual pause
     private var lastPlaybackPosition: TimeInterval?
@@ -712,6 +719,7 @@ private extension CriteoVideoPlayer {
         closedCaptionButton.layer.cornerRadius = 4 // Same as other controls
         closedCaptionButton.isSelected = isClosedCaptionEnabled
         closedCaptionButton.addTarget(self, action: #selector(closedCaptionButtonTapped), for: .touchUpInside)
+        closedCaptionButton.isHidden = true
         controlsContainerView.addSubview(closedCaptionButton)
     }
     
@@ -1137,6 +1145,40 @@ private extension CriteoVideoPlayer {
         
         delegate?.videoPlayerDidReceiveUserInteraction(self)
         playerLog("Video player received user interaction", category: .video)
+    }
+}
+
+// MARK: - App Lifecycle
+
+private extension CriteoVideoPlayer {
+
+    func registerLifecycleObservers() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleWillResignActive),
+            name: UIApplication.willResignActiveNotification,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleDidBecomeActive),
+            name: UIApplication.didBecomeActiveNotification,
+            object: nil
+        )
+    }
+
+    @objc func handleWillResignActive() {
+        wasPlayingBeforeResignActive = (playbackState == .playing)
+    }
+
+    @objc func handleDidBecomeActive() {
+        if wasPlayingBeforeResignActive && !isUserPaused && playbackState != .finished {
+            play()
+            updatePlayButtonImage(isPlaying: true)
+        } else {
+            updatePlayButtonImage(isPlaying: playbackState == .playing)
+        }
+        wasPlayingBeforeResignActive = false
     }
 }
 

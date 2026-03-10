@@ -2,8 +2,7 @@
 //  OMIDSessionInteractor+Stubs.swift
 //  OM-Demo
 //
-//  Created by Serxhio Gugo on 11/29/25.
-//  Copyright © 2025 Open Measurement Working Group. All rights reserved.
+//  Copyright © 2026 Criteo. All rights reserved.
 //
 
 // Note: This file provides a no-op fallback for OMID. It is compiled only when

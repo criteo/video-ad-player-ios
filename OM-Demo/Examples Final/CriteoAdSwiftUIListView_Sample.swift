@@ -5,6 +5,8 @@
 //  Simple SwiftUI List example showing video ad integration
 //  Demonstrates basic video ad in a scrollable feed
 //
+//  Copyright © 2026 Criteo. All rights reserved.
+//
 
 import SwiftUI
 import Foundation
